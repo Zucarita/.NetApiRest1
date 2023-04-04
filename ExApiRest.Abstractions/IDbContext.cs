@@ -8,5 +8,6 @@ namespace ExApiRest.Abstractions
 {
     public interface IDbContext<T> : ICrud<T>
     {
+        void Delete(int id);
     }
 }
