@@ -1,27 +1,24 @@
 ﻿using ExApiRest.Abstractions;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace ExApiRest.DataAccess
-{
-    internal class DbContext<T> : IDbContext<T> where T : IEntity
+namespace ExApiRest.DataAccess{
+
+    public class DbContext<T> : IDbContext<T> where T : class,IEntity
     {
+        DbSet<T> _items;
 
-        IList<T> _data;
-
-        public DbContext() 
+        ApiDbContext _ctx;
+        public DbContext(ApiDbContext ctx) 
         { 
-            _data = new List<T>();
+            _ctx = ctx;
+            _items = ctx.Set<T>();
         }
         public void Delete(int id)
         {
-           var e = _data.Where(u => u.Id.Equals (id)).FirstOrDefault();
-           if(e != null)
-            {
-                _data.Remove(e);
-            }
+          
         }
 
         public void DeleteById(int id)
@@ -31,24 +28,18 @@ namespace ExApiRest.DataAccess
 
         public IList<T> GetAll()
         {
-            return _data;
+            return _items.ToList();
         }
 
         public T GetById(int id)
         {
-            return (T)_data.Where(e => e.Id.Equals(id)).FirstOrDefault();
+           return _items.Where(i => i.Id.Equals(id)).FirstOrDefault();
         }
 
         public T Save(T entity)
         {
-            if (entity.Id.Equals(0))
-            {
-                _data.Add(entity);
-            }
-            else
-            {
-                
-            }
+           _items.Add(entity);
+            _ctx.SaveChanges();
             return entity;
         }
     }

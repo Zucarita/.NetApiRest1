@@ -1,5 +1,6 @@
 ﻿using ExApiRest.Application;
 using ExApiRest.Entities;
+using ExApiRest.Webapi.NewFolder1;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,16 +21,24 @@ namespace ExApiRest.Webapi.Controllers
 
         }
         [HttpGet]
-        public IActionResult Get() 
+            public IActionResult Get() 
         {
-            return Ok(new FootballTeam()
+            return Ok(_football.GetAll());
+        }
+
+        [HttpPost]
+
+            public IActionResult Save(FootballTeamDTO dto)
             {
 
-                Name = "San Lorenzo",
-                Score = 100
-
-            });
+            var f = new FootballTeam()
+            {
+                Name = dto.Name,
+                Score = dto.Score
+            };
+            return Ok(_football.Save(f));
         }
+
     }
 
 }
