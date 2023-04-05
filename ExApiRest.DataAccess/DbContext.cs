@@ -4,12 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ExApiRest.DataAccess{
-
+namespace ExApiRest.DataAccess
+{
     public class DbContext<T> : IDbContext<T> where T : class,IEntity
     {
         DbSet<T> _items;
-
+          
         ApiDbContext _ctx;
         public DbContext(ApiDbContext ctx) 
         { 

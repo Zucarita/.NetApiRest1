@@ -12,16 +12,21 @@
     <EmbeddedResource Remove="NewFolder\**" />
     <None Remove="NewFolder\**" />
   </ItemGroup>
-
+	
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.14" />
+
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ExApiRest.Abstractions\ExApiRest.Abstractions.csproj" />
     <ProjectReference Include="..\ExApiRest.Application\ExApiRest.Application.csproj" />
     <ProjectReference Include="..\ExApiRest.Entities\ExApiRest.Entities.csproj" />
     <ProjectReference Include="..\ExApiRest.Services\ExApiRest.Services.csproj" />
+	  
+	  
   </ItemGroup>
 
 </Project>

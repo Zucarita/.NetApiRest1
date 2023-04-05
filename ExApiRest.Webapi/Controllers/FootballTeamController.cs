@@ -34,7 +34,8 @@ namespace ExApiRest.Webapi.Controllers
             var f = new FootballTeam()
             {
                 Name = dto.Name,
-                Score = dto.Score
+                Score = dto.Score,
+                Manager = dto.Manager,
             };
             return Ok(_football.Save(f));
         }

@@ -9,6 +9,6 @@ namespace ExApiRest.Entities
 
         public double Score { get; set; }
 
-        
+        public string Manager { get; set; }
     }
 }
