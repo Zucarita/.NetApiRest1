@@ -62,11 +62,8 @@ namespace ExApiRest.Webapi
                     };
                 });
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentityCore<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             .AddEntityFrameworkStores<ApiDbContext>();
-
-
-
 
             services.AddScoped(typeof(IApplication<>), typeof(Application<>));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
