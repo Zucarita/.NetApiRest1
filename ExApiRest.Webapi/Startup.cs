@@ -2,16 +2,18 @@ using ExApiRest.Abstractions;
 using ExApiRest.Application;
 using ExApiRest.DataAccess;
 using ExApiRest.Repository;
+using ExApiRest.Webapi.Configuration;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-
-
-
+using System.Text;
 
 namespace ExApiRest.Webapi
 {
@@ -36,7 +38,35 @@ namespace ExApiRest.Webapi
 
             services.AddDbContext<ApiDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("ExApiRest.WebApi")));
-                
+
+            services.Configure<JwtConfig>(Configuration.GetSection("JwtConfig"));
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+
+                .AddJwtBearer(jwt => {
+                    var key = Encoding.ASCII.GetBytes(Configuration["JwtConfig:Secret"]);
+
+                    jwt.SaveToken = true;
+                    jwt.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        RequireExpirationTime = false,
+                        ValidateLifetime = true
+                    };
+                });
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            .AddEntityFrameworkStores<ApiDbContext>();
+
+
+
 
             services.AddScoped(typeof(IApplication<>), typeof(Application<>));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -58,7 +88,7 @@ namespace ExApiRest.Webapi
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseAuthentication();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
