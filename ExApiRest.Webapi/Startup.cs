@@ -2,7 +2,7 @@ using ExApiRest.Abstractions;
 using ExApiRest.Application;
 using ExApiRest.DataAccess;
 using ExApiRest.Repository;
-using ExApiRest.Webapi.Configuration;
+using ExApiRest.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,7 +39,9 @@ namespace ExApiRest.Webapi
             services.AddDbContext<ApiDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("ExApiRest.WebApi")));
 
-            services.Configure<JwtConfig>(Configuration.GetSection("JwtConfig"));
+
+            
+            services.Configure<Services.JwtConfig>(Configuration.GetSection("JwtConfig"));
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -68,6 +70,7 @@ namespace ExApiRest.Webapi
             services.AddScoped(typeof(IApplication<>), typeof(Application<>));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IDbContext<>), typeof(Repository<>));
+            services.AddScoped(typeof(ITokenHandlerService), typeof(TokenHandlerService));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

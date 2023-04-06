@@ -1,9 +1,10 @@
 ﻿using ExApiRest.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExApiRest.DataAccess
 {
-    public class ApiDbContext : DbContext
+    public class ApiDbContext : IdentityDbContext
     {
         public DbSet<FootballTeam> Teams { get; set;}
 
