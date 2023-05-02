@@ -1,3 +1,3 @@
-API REST  Microsoft .NET5 - 
+API REST  Microsoft .NET - 
 Architecture, persistence with EF and security with JWT
-Docker deploy
+Deploy whit doker & azure
