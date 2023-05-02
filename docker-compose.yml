@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  exapirest.webapi:
+    image: ${DOCKER_REGISTRY-}exapirestwebapi
+    build: 
+      context: .
+      dockerfile: ExApiRest.Webapi/Dockerfile
+    ports:
+          -  "80:80"
+    depends_on:
+        - "mongo"
+  mongo:
+    image: mongo
+    ports:
+        - "27017:27017"

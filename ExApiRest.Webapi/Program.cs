@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
 namespace ExApiRest.Webapi
 {
@@ -12,6 +13,11 @@ namespace ExApiRest.Webapi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog((HostBuilderContext,config) =>
+                {
+                   config.ReadFrom.Configuration(HostBuilderContext.Configuration);
+                   config.Enrich.FromLogContext();
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

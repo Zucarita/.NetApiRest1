@@ -5,17 +5,19 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExApiRest.Webapi", "ExApiRest.Webapi\ExApiRest.Webapi.csproj", "{55B4B7CD-5A16-4C40-A6DF-04732483C5A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExApiRest.Application", "ExApiRest.Application\ExApiRest.Application.csproj", "{4853CE2A-F632-4301-A7A0-0D09CA73F390}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExApiRest.Application", "ExApiRest.Application\ExApiRest.Application.csproj", "{4853CE2A-F632-4301-A7A0-0D09CA73F390}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExApiRest.Entities", "ExApiRest.Entities\ExApiRest.Entities.csproj", "{A797652E-A4AB-4E1A-ABF7-CE34A631B9F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExApiRest.Entities", "ExApiRest.Entities\ExApiRest.Entities.csproj", "{A797652E-A4AB-4E1A-ABF7-CE34A631B9F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExApiRest.Repository", "ExApiRest.Repository\ExApiRest.Repository.csproj", "{CA5FEE8E-ACC9-4CC9-AB32-7832E6A524A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExApiRest.Repository", "ExApiRest.Repository\ExApiRest.Repository.csproj", "{CA5FEE8E-ACC9-4CC9-AB32-7832E6A524A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExApiRest.Services", "ExApiRest.Services\ExApiRest.Services.csproj", "{FF0B6FF2-2100-4B89-B3CF-8CC778C882F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExApiRest.Services", "ExApiRest.Services\ExApiRest.Services.csproj", "{FF0B6FF2-2100-4B89-B3CF-8CC778C882F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExApiRest.DataAccess", "ExApiRest.DataAccess\ExApiRest.DataAccess.csproj", "{7E84BD02-1D51-409B-8C40-4E375F846018}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExApiRest.DataAccess", "ExApiRest.DataAccess\ExApiRest.DataAccess.csproj", "{7E84BD02-1D51-409B-8C40-4E375F846018}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExApiRest.Abstractions", "ExApiRest.Abstractions\ExApiRest.Abstractions.csproj", "{C825A50F-CE82-4DE6-8232-19B3411864B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExApiRest.Abstractions", "ExApiRest.Abstractions\ExApiRest.Abstractions.csproj", "{C825A50F-CE82-4DE6-8232-19B3411864B1}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{08300ECF-3466-4D4B-AB3C-B8CC60E8E71B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{C825A50F-CE82-4DE6-8232-19B3411864B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C825A50F-CE82-4DE6-8232-19B3411864B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C825A50F-CE82-4DE6-8232-19B3411864B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08300ECF-3466-4D4B-AB3C-B8CC60E8E71B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08300ECF-3466-4D4B-AB3C-B8CC60E8E71B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08300ECF-3466-4D4B-AB3C-B8CC60E8E71B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08300ECF-3466-4D4B-AB3C-B8CC60E8E71B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
